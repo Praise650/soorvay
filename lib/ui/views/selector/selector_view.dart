@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:soorvay/ui/views/create_question/create_question.dart';
 import 'package:soorvay/ui/views/question/question_view.dart';
+
+import '../../styles/deorations.dart';
 
 class SelectorView extends StatelessWidget {
   const SelectorView({Key? key}) : super(key: key);
@@ -8,11 +11,7 @@ class SelectorView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.blue, Colors.deepPurple],
-          ),
-        ),
+        decoration:appBgDecoration,
         alignment: Alignment.center,
         child: GridView.count(
           crossAxisCount: 2,
@@ -21,7 +20,8 @@ class SelectorView extends StatelessWidget {
             "Create Questions",
             "Create Session",
             "Join Session",
-            "General Questions"
+            "General Questions",
+            "Survey Questions"
           ]
               .map((e) => Card(
                     color: Colors.white,
@@ -32,6 +32,14 @@ class SelectorView extends StatelessWidget {
                     ),
                     child: InkWell(
                       onTap: () {
+                        if(e == "Create Questions")
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => CreateQuestionsView(),
+                          ),
+                        );
+                        else 
                         Navigator.push(
                           context,
                           MaterialPageRoute(
